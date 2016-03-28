@@ -1,9 +1,9 @@
-# MAIN METHOD FOR SHIA
+# MAIN METHOD FOR LIL BILL
 #
 #
+
 import fileinput
 import db
-#import readline
 import Restaurant
 import Api
 
@@ -38,7 +38,7 @@ def main():
 	#Database creation from config
 	tree = db.Tree()
 	tree.createTree(modules)
-	tree.printTree()
+#	tree.printTree()
 	
 	#Main program flow -- Module executions will be called in here 
 	while True:
@@ -48,12 +48,13 @@ def main():
 
 		for key in crossRef:
 			sub = key
-			cmds = crossRef[key]
+			commands = crossRef[key]
+#			print commands
 			print sub.module, "##########"
 			if sub.module in Api.validAPIs:
-				print "bitchass"
-				Api.cmd = current_working_command
-				print Api.cmd
+#				print "bitchass"
+				Api.command = commands
+				print Api.command
 				Api.validAPIs[sub.module]
 		#CREATE EXECUTION HERE
 
@@ -63,10 +64,10 @@ def main():
 def userInput(tree):
 	user_input = raw_input()
 	current_working_command = user_input
-	print current_working_command
+#	print current_working_command
 	user_input = user_input.split(" ")
 	print "USER COMMANDS"
-	print user_input
+	print current_working_command
 	valid_input = []
 	for i in user_input:
 		found = tree.searchTree(i)
@@ -74,9 +75,8 @@ def userInput(tree):
 			valid_input.append(found)
 	for i in valid_input:
 		print i
-	print "User Input-- Valid Input:"
-	print valid_input
-	print
+		print "User Input-- Valid Input:"
+		#print valid_input
 	return valid_input
 
 #
@@ -84,6 +84,7 @@ def userInput(tree):
 # Form an execution  
 #
 def crossReference(valid_input):
+	print valid_input
 	cmds = []
 	subjs = []
 	execute = {}

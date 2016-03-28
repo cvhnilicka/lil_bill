@@ -27,3 +27,10 @@ $search
 $exit
 %Weather
 #Weather
+$temperature
+$temp
+$wind
+$description
+%Family
+#Mom
+#Dad

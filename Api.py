@@ -47,9 +47,16 @@ def checkCity(string):
 
 
 
-cmd = "this guy sounds like fun"
+command = "this guy sounds like fun"
+
+def setCommand(new):
+	command = new
+
+def printCommand():
+	print "command is ", command
+
 
 validAPIs = {
-"weather" : checkCity(cmd)
+"weather" : checkCity(command)
 
 }
