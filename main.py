@@ -99,6 +99,12 @@ def crossReference(valid_input):
 
 
 	#Cross Reference
+	
+	for x in cmds:
+		if x.standalone == True:
+			execute[x] = x
+			print "success"
+
 	for x in subjs:
 		a = []
 		for j in cmds:

@@ -23,11 +23,11 @@ class ModuleNode(object):
 		self.subjects = []
 	
 	def addCmd(self, cmd_add, stdaln):
-		newN = ObjectNode("CMD", self.name, cmd_add)	
+		newN = ObjectNode("CMD", self.name, cmd_add, stdaln)	
 		self.commands.append(newN)  	
 	
-	def addSbj(self, subject_add):
-		newN = ObjectNode("SBJ", self.name, subject_add)	
+	def addSbj(self, subject_add, stdaln):
+		newN = ObjectNode("SBJ", self.name, subject_add, stdaln)	
 		self.subjects.append(newN)
 	
 	## EVENTUALLY MAKE THIS FASTER ##
@@ -65,7 +65,7 @@ class RootNode(object):
 		print moduleName
 		print "Sub array from config: ",sbjarr,"\n"
 		for j in sbjarr:			
-			newMod.addSbj(j)			#Fills the module node's obj array 		
+			newMod.addSbj(j, False)			#Fills the module node's obj array 		
 		self.modules.append(newMod)		
 	
 	def searchModule(self, moduleName): 
