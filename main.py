@@ -49,7 +49,6 @@ def main():
 		for key in crossRef:
 			sub = key
 			commands = crossRef[key]
-#			print commands
 			print sub.module, "##########"
 			if sub.module in Api.validAPIs:
 #				print "bitchass"
@@ -97,7 +96,8 @@ def crossReference(valid_input):
 	print "Cross Ref here"
 	print "Subs: ", subjs
 	print "Cmds: ", cmds
-	print
+
+
 	#Cross Reference
 	for x in subjs:
 		a = []

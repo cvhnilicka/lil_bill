@@ -2,10 +2,11 @@
 import difflib
 
 class ObjectNode(object):
-	def __init__(self, typ, module, value):
+	def __init__(self, typ, module, value, standalone):
 		self.module = module
 		self.typ = typ    
 		self.valueStr = value
+		self.standalone = standalone
 
 	def __str__(self):
         	return str(self.__dict__)	
@@ -21,7 +22,7 @@ class ModuleNode(object):
 		self.commands = [] 
 		self.subjects = []
 	
-	def addCmd(self, cmd_add):
+	def addCmd(self, cmd_add, stdaln):
 		newN = ObjectNode("CMD", self.name, cmd_add)	
 		self.commands.append(newN)  	
 	
@@ -55,13 +56,17 @@ class RootNode(object):
 		print moduleName
 		print "Command array from config: ", cmdarr, "\n" 
 		for i in cmdarr:
-			newMod.addCmd(i)                       #Fills the module node's commands array 
+			if "*" in i:
+				i = i[:-1]
+				newMod.addCmd(i, True)
+			else:
+				newMod.addCmd(i, False)                       #Fills the module node's commands array 
+			
 		print moduleName
 		print "Sub array from config: ",sbjarr,"\n"
 		for j in sbjarr:			
 			newMod.addSbj(j)			#Fills the module node's obj array 		
-		self.modules.append(newMod)
-			
+		self.modules.append(newMod)		
 	
 	def searchModule(self, moduleName): 
 		for i in self.modules:

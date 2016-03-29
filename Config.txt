@@ -27,8 +27,8 @@ $search
 $exit
 %Weather
 #Weather
-$temperature
-$temp
+$temperature*
+$temp*
 $wind
 $description
 %Family
